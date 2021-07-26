@@ -72,3 +72,39 @@ function showSuccess(input){
         
     }
 }
+
+const requestForm = document.querySelector(".form-request");
+
+requestForm.style.display = "none";
+
+const showRequestForm = document.querySelector('.reset-password')
+
+showRequestForm.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if(requestForm.style.display !=="block"){
+        loginContainer.style.minHeight = "600px";
+        requestForm.style.display = "block";
+    }else{
+        requestForm.style.display = "none";
+        loginContainer.style.minHeight = "initial"
+    }
+})
+
+requestForm.addEventListener('submit', request);
+
+function request(e){
+    e.preventDefault()
+
+    const requestEmail= document.getElementById("requestEmail")
+  //  console.log(requestEmail);
+
+  if(requestForm.style.display === "block") {
+      const requestEmail= document.getElementById("requestEmail")
+     if(requestEmail.value===''){
+         showError(requestEmail, "email cannot be empty")
+     }else {
+         showSuccess(requestEmail);
+     }
+  }
+}
